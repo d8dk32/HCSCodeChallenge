@@ -4,18 +4,30 @@ import './App.css';
 import Login from './Login';
 
 class App extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      authenticated: false
+    }
+  }
+
+  authResponseHandler = (isAuthenticated) => {
+    this.setState((state) => {
+     return {
+       authenticated: isAuthenticated 
+      }
+    });
+    alert('login successful? ' + isAuthenticated);
+  }
+
   render() {
-    const App = () => (
+    return (
       <div>
         <Switch>
-          <Route exact path='/' component={Login}/>
+          <Route exact path='/' render={() =><Login authResponseHandler={this.authResponseHandler} />}/>
         </Switch>
       </div>
-    )
-    return (
-      <Switch>
-        <App/>
-      </Switch>
     );
   }
 }

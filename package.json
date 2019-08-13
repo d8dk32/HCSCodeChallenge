@@ -1,0 +1,15 @@
+{
+  "name": "hsc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/d8dk32/HCSCodeChallenge.git",
+  "author": "Lee C. <lcurtis9000@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}

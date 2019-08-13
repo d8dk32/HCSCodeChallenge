@@ -16,14 +16,35 @@ class Login extends Component {
     const userInput = document.querySelector("input[name='username']");
     const passInput = document.querySelector("input[name='password']");
 
-    const data = {
+    const payload = {
       username: userInput.value,
       password: passInput.value
-    }
-    authResponseHandler(true);
-    /*fetch('/api/getList')
-    .then(res => res.json())
-    .then(list => this.setState({ list }))*/
+    };
+
+    const fetchParams = {
+      headers: {
+        "content-type" : "application/json; charset=UTF-8"
+      },
+      body: JSON.stringify(payload),
+      method: "POST"
+    };
+
+    fetch('/login', fetchParams)
+    .then( data => {
+      console.log(JSON.stringify(data, null, 2));
+      return data.json()
+    })
+    .then( res => {
+      console.log(JSON.stringify(res, null, 2));
+      if(res.authenticated === true)
+        authResponseHandler(res);
+      else
+        alert("Username or password did not match any accounts.");
+    })
+    .catch( err => {
+      alert("Error reaching the server");
+    });
+
   }
 
   handleLogin = () => {    

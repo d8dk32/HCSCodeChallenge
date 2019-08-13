@@ -8,17 +8,21 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// An api endpoint that returns a short list of items
 app.post('/login', (req,res) => {
     //do mongo stuff eventually
     //for now just send something back
-    if(req.body.username && req.body.password)
+    if(req.body.username === 'username' && req.body.password === 'password')
     {
         res.send({
-            authenticated: true, 
+            authenticated: true
+        });
+    }
+    else {
+        res.send({
+            authenticated: false,
             userInfo: {
-                name: "John Smith",
-                tasks: ["eat", "sleep"]
+                name: "",
+                tasks: []
             }
         });
     }

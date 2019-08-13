@@ -8,17 +8,19 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      authenticated: false
+      authenticated: false,
     }
   }
 
-  authResponseHandler = (isAuthenticated) => {
+  authResponseHandler = (authResponse) => {
+
     this.setState((state) => {
      return {
-       authenticated: isAuthenticated 
+       authenticated: authResponse.authenticated
       }
     });
-    alert('login successful? ' + isAuthenticated);
+
+    alert('login successful -  ' + JSON.stringify(this.state));
   }
 
   render() {

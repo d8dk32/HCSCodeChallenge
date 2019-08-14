@@ -1,6 +1,14 @@
 # HCSCodeChallenge
 Coding challenge for HCS interview
 
+How to run this project: 
+1) make sure there is a local instance of MongoDB installed and running. https://docs.mongodb.com/manual/installation/
+2) Clone this git repo
+3) In the top-level directory, you should perform a 'yarn install' or 'npm install'. I've been using Yarn but I see no reason NPM wouldn't work jsut fine.
+4) May want to do an NPM install in the 'client' directory as well. It has its own package.json
+5) in the top-level directory (HCSCODECHALLENGE) open command prompt and do a 'yarn start' or 'npm run start', then go to the 'client' directory and do the same thing
+6) that should be it. If a browser doesn't open automatically, open one and go to http://localhost:3000
+
 Implementation steps:
 
 1) Create a very basic Express Server, just to make sure I had something my front-end could hit and that it was working properly. I made a single simple endpoint that returned a list of things, and another "catch-all" endpoint.

@@ -10,7 +10,7 @@ class Login extends Component {
     }
   }
 
-  // Retrieves the list of items from the Express app
+  // makes call to login endpoint for authentication
   authenticate = () => {
     const {authResponseHandler} = this.props;
     const userInput = document.querySelector("input[name='username']");
@@ -31,11 +31,10 @@ class Login extends Component {
 
     fetch('/login', fetchParams)
     .then( data => {
-      console.log(JSON.stringify(data, null, 2));
       return data.json()
     })
     .then( res => {
-      console.log(JSON.stringify(res, null, 2));
+
       if(res.authenticated === true)
         authResponseHandler(res);
       else
@@ -47,6 +46,7 @@ class Login extends Component {
 
   }
 
+  //handles click for Login button and validates username/password fields
   handleLogin = () => {    
     const userInput = document.querySelector("input[name='username']");
     const passInput = document.querySelector("input[name='password']");
